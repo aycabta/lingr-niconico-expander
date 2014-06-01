@@ -154,12 +154,6 @@
         if (typeof isModeless === 'undefined') {
             isModeless = true;
         }
-        var onclickCode;
-        if (isModeless == true) {
-            onclickCode = 'Modeless.showVideoModeless(this)';
-        } else {
-            onclickCode = "window.open('http://www.nicovideo.jp/watch/" + v + "')";
-        }
         GM_xmlhttpRequest({
             method: 'GET',
             url: "http://ext.nicovideo.jp/thumb_watch/" + v + "?w=490&h=307&n=1",
@@ -172,7 +166,7 @@
                     $span.innerHTML =
                         '<div class="mask" style="margin: 0px; padding: 0px; width: 490px; height: 307px;">' +
                         player.getHTML() +
-                        '<div onclick="' + onclickCode + '"></div></div>';
+                        (isModeless ? '<div onclick="Modeless.showVideoModeless(this)"></div></div>' : '');
                 }
             }
         });
