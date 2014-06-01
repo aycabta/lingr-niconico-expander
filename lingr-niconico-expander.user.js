@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       Lingr Niconico Expander
 // @namespace  http://aycabta.github.io/
-// @version    0.2.4
+// @version    0.2.5
 // @description  URL -> embedded player
 // @include    http://lingr.com/
 // @include    http://lingr.com/room/*/archives*
@@ -178,8 +178,7 @@
             if (!str) {
                 return Lingr.Text.oldNiconicoExpanderDecorate(str);
             }
-            var newStr = Lingr.Text.oldNiconicoExpanderDecorate(str);
-            var convertedStr = newStr.split('<\/p><p>').map(function(s) {
+            var convertedStr = str.split('<\/p><p>').map(function(s) {
                 hit = s.match(/^<a href.+>(?:http:\/\/)?www\.nicovideo\.jp\/watch\/([a-z]+[0-9]+)(?:\?.*)?<\/a>$/);
                 if (hit != null) {
                     var reservedID = Nicovideo.Global.reserveCount++;
@@ -190,7 +189,8 @@
                     return s;
                 }
             }).join('</p><p>');
-            return convertedStr;
+            var newStr = Lingr.Text.oldNiconicoExpanderDecorate(convertedStr);
+            return newStr;
         };
     } else {
         var messages = $("div.decorated p");
