@@ -178,7 +178,8 @@
             if (!str) {
                 return Lingr.Text.oldNiconicoExpanderDecorate(str);
             }
-            var convertedStr = str.split('<\/p><p>').map(function(s) {
+            var newStr = Lingr.Text.oldNiconicoExpanderDecorate(str)
+            var convertedStr = newStr.split('<\/p><p>').map(function(s) {
                 hit = s.match(/^<a href.+>(?:http:\/\/)?www\.nicovideo\.jp\/watch\/([a-z]+[0-9]+)(?:\?.*)?<\/a>$/);
                 if (hit != null) {
                     var reservedID = Nicovideo.Global.reserveCount++;
@@ -189,8 +190,7 @@
                     return s;
                 }
             }).join('</p><p>');
-            var newStr = Lingr.Text.oldNiconicoExpanderDecorate(convertedStr);
-            return newStr;
+            return convertedStr;
         };
     } else {
         var messages = $("div.decorated p");
