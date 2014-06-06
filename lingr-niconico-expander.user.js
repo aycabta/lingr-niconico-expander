@@ -198,7 +198,6 @@
             var oldMessage = messages[i].innerHTML;
             hit = oldMessage.match(/^<a href.+>(?:http:\/\/)?www\.nicovideo\.jp\/watch\/([a-z]+[0-9]+)(?:\?.*)?<\/a>$/);
             if (hit != null) {
-                console.log(oldMessage);
                 var reservedID = Nicovideo.Global.reserveCount++;
                 v = hit[1];
                 requestPlayerHTML(v, reservedID, false);
