@@ -180,7 +180,7 @@
             }
             var newStr = Lingr.Text.oldNiconicoExpanderDecorate(str)
             var convertedStr = newStr.split('<\/p><p>').map(function(s) {
-                hit = s.match(/^<a href.+>(?:http:\/\/)?www\.nicovideo\.jp\/watch\/([a-z]+[0-9]+)(?:\?.*)?<\/a>$/);
+                hit = s.match(/^<a href.+>(?:http:\/\/)?www\.nicovideo\.jp\/watch\/([a-z0-9]+)(?:\?.*)?<\/a>$/);
                 if (hit != null) {
                     var reservedID = Nicovideo.Global.reserveCount++;
                     v = hit[1];
@@ -196,7 +196,7 @@
         var messages = $("div.decorated p");
         for (i = 0; i < messages.length; i++) {
             var oldMessage = messages[i].innerHTML;
-            hit = oldMessage.match(/^<a href.+>(?:http:\/\/)?www\.nicovideo\.jp\/watch\/([a-z]+[0-9]+)(?:\?.*)?<\/a>$/);
+            hit = oldMessage.match(/^<a href.+>(?:http:\/\/)?www\.nicovideo\.jp\/watch\/([a-z0-9]+)(?:\?.*)?<\/a>$/);
             if (hit != null) {
                 var reservedID = Nicovideo.Global.reserveCount++;
                 v = hit[1];
