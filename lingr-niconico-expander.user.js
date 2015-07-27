@@ -158,9 +158,13 @@
             method: 'GET',
             url: "http://ext.nicovideo.jp/thumb_watch/" + v + "?w=490&h=307&n=1",
             onload: function(response) {
-                wholeHit = response.responseText.match(/new Nicovideo\.MiniPlayer\(video, (\{[\s\S]+\}),/m);
-                eval("params = " + wholeHit[1] + ";");
-                player = new Nicovideo.MiniPlayer(params, 490, 307);
+                try {
+                    wholeHit = response.responseText.match(/new Nicovideo\.MiniPlayer\(video, (\{[\s\S]+\}),/m);
+                    eval("params = " + wholeHit[1] + ";");
+                    player = new Nicovideo.MiniPlayer(params, 490, 307);
+                } catch(e) {
+                    return;
+                }
                 var $span = $('span#niconico_reserve_' + reservedID)[0];
                 if ($span) {
                     $span.innerHTML =
