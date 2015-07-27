@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       Lingr Niconico Expander
 // @namespace  http://aycabta.github.io/
-// @version    0.2.7
+// @version    0.2.8
 // @description  URL -> embedded player
 // @include    http://lingr.com/
 // @include    http://lingr.com/room/*/archives*
